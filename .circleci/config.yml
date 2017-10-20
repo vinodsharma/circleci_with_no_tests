@@ -13,6 +13,7 @@ jobs:
       - run:
           name: Set Docker Image Env Variable for python3.6
           command: |
+            yum -y install docker
             echo 'export DOCKER_IMAGE=gobble/python:3.6' >> $BASH_ENV
 
       - run:
