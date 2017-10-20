@@ -2,14 +2,11 @@ FROM amazonlinux:2017.03
 
 ENV VENV_DIR=/venv
 
-RUN yum update -y
-RUN yum -y groupinstall "Development Tools"
-RUN yum -y install zlib-devel
-RUN yum -y install openssl-devel
-RUN yum -y install wget
-RUN yum -y install gcc-c++ atlas-sse3-devel \
-                    lapack-devel zip \
-                    postgresql-devel mysql-devel docker
+RUN yum update -q -y
+RUN yum -q -y groupinstall "Development Tools"
+RUN yum -q -y zlib-devel openssl-devel wget \ 
+  gcc-c++ atlas-sse3-devel lapack-devel zip\
+  postgresql-devel mysql-devel docker
 RUN wget https://github.com/openssl/openssl/archive/OpenSSL_1_0_2l.tar.gz \
   && tar -zxvf OpenSSL_1_0_2l.tar.gz \
   && cd openssl-OpenSSL_1_0_2l/ \
