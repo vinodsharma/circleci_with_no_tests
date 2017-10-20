@@ -1,1 +1,3 @@
-# circleci_with_no_tests
+# Project Thestral
+
+A project to maintain base docker images.
