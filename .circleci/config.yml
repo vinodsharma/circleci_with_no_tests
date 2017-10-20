@@ -15,16 +15,16 @@ jobs:
           command: |
             echo 'export DOCKER_IMAGE=gobble/python:3.6' >> $BASH_ENV
 
-      # - run:
-      #     name: Building Python 3.6 Docker Image
-      #     command: |
-      #       docker build -t  $DOCKER_IMAGE .
-      #
-      #
-      # - deploy:
-      #     name: Pushing python 3.6 Docker Image to Docker Hub
-      #     command: |
-      #       if [ "${CIRCLE_BRANCH}" == "master" ]; then
-      #         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      #         docker push $DOCKER_IMAGE
-      #       fi
+      - run:
+          name: Building Python 3.6 Docker Image
+          command: |
+            docker build -t  $DOCKER_IMAGE .
+
+
+      - deploy:
+          name: Pushing python 3.6 Docker Image to Docker Hub
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker push $DOCKER_IMAGE
+            fi
