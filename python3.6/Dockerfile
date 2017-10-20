@@ -4,7 +4,7 @@ ENV VENV_DIR=/venv
 
 RUN yum update -q -y
 RUN yum -q -y groupinstall "Development Tools"
-RUN yum -q -y zlib-devel openssl-devel wget \ 
+RUN yum -q -y install zlib-devel openssl-devel wget \ 
   gcc-c++ atlas-sse3-devel lapack-devel zip\
   postgresql-devel mysql-devel docker
 RUN wget https://github.com/openssl/openssl/archive/OpenSSL_1_0_2l.tar.gz \
