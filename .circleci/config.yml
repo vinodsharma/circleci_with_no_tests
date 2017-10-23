@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Building Spark 2.2 Docker Image
           command: |
-            docker build -f python3.6/Dockerfile -t  $DOCKER_IMAGE .
+            docker build -f spark2.2/Dockerfile -t  $DOCKER_IMAGE .
 
 
       - deploy:
