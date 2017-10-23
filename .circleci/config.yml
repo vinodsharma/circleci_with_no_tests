@@ -32,7 +32,9 @@ jobs:
       - run:
           name: Set Docker Image Env Variable for Spark 2.2
           command: |
+            echo $DOCKER_IMAGE
             echo 'export DOCKER_IMAGE=gobble/spark:2.2' >> $BASH_ENV
+            echo $DOCKER_IMAGE
 
       - run:
           name: Building Spark 2.2 Docker Image
