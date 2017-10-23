@@ -25,6 +25,7 @@ jobs:
       - deploy:
           name: Pushing python 3.6 Docker Image to Docker Hub
           command: |
+            echo $DOCKER_IMAGE
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
               docker push $DOCKER_IMAGE
