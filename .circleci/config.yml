@@ -28,3 +28,22 @@ jobs:
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
               docker push $DOCKER_IMAGE
             fi
+
+      - run:
+          name: Set Docker Image Env Variable for Spark 2.2
+          command: |
+            echo 'export DOCKER_IMAGE=gobble/spark:2.2' >> $BASH_ENV
+
+      - run:
+          name: Building Spark 2.2 Docker Image
+          command: |
+            docker build -f python3.6/Dockerfile -t  $DOCKER_IMAGE .
+
+
+      - deploy:
+          name: Pushing Spark 2.2 Docker Image to Docker Hub
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker push $DOCKER_IMAGE
+            fi
