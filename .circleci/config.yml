@@ -13,8 +13,7 @@ jobs:
       - run:
           name: Set Docker Image Env Variable for python3.6
           command: |
-            # echo 'export DOCKER_IMAGE=gobble/python:3.6' >> $BASH_ENV
-            export DOCKER_IMAGE=gobble/spark:2.2
+            echo 'export DOCKER_IMAGE=gobble/python:3.6' >> $BASH_ENV
 
       # - run:
       #     name: Building Python 3.6 Docker Image
@@ -34,7 +33,7 @@ jobs:
           name: Set Docker Image Env Variable for Spark 2.2
           command: |
             echo $DOCKER_IMAGE
-            export DOCKER_IMAGE=gobble/spark:2.2
+            echo 'export DOCKER_IMAGE=gobble/spark:2.2' >> $BASH_ENV
             echo $DOCKER_IMAGE
 
       - run:
