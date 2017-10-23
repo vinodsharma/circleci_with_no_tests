@@ -18,12 +18,35 @@ jobs:
       - run:
           name: Building Python 3.6 Docker Image
           command: |
-            docker build -f python3.6/Dockerfile -t  $DOCKER_IMAGE .
+            echo $DOCKER_IMAGE
+            # docker build -f python3.6/Dockerfile -t  $DOCKER_IMAGE .
 
 
       - deploy:
           name: Pushing python 3.6 Docker Image to Docker Hub
           command: |
+            echo $DOCKER_IMAGE
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker push $DOCKER_IMAGE
+            fi
+
+      - run:
+          name: Set Docker Image Env Variable for Spark 2.2
+          command: |
+            echo 'export DOCKER_IMAGE=gobble/spark:2.2' >> $BASH_ENV
+
+      - run:
+          name: Building Spark 2.2 Docker Image
+          command: |
+            echo $DOCKER_IMAGE
+            docker build -f spark2.2/Dockerfile -t  $DOCKER_IMAGE .
+
+
+      - deploy:
+          name: Pushing Spark 2.2 Docker Image to Docker Hub
+          command: |
+            echo $DOCKER_IMAGE
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
               docker push $DOCKER_IMAGE
