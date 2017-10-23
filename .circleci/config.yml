@@ -15,10 +15,10 @@ jobs:
           command: |
             echo 'export DOCKER_IMAGE=gobble/python:3.6' >> $BASH_ENV
 
-      - run:
-          name: Building Python 3.6 Docker Image
-          command: |
-            docker build -f python3.6/Dockerfile -t  $DOCKER_IMAGE .
+      # - run:
+      #     name: Building Python 3.6 Docker Image
+      #     command: |
+      #       docker build -f python3.6/Dockerfile -t  $DOCKER_IMAGE .
 
 
       - deploy:
